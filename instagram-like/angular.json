@@ -23,12 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "C:/personal/instagram/instagram-like/node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": [
-              "C:/personal/instagram/instagram-like/node_modules/jquery/dist/jquery.js",
-              "C:/personal/instagram/instagram-like/node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/jquery/dist/jquery.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
