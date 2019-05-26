@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" >Dream Board</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"><a [routerLink]="['/']">Home</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/allposts']">All Posts</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/following']">Following</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/favorites']">Favorites</a></li>
+      <li routerLinkActive="active"><a [routerLink]="['/myposts']">My Posts</a></li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a [routerLink]="['/signup']">Sign up</a></li>
+        <li><a [routerLink]="['/login']">Login</a></li>
+        <li><a [routerLink]="['/logout']">Logout</a></li>
+    </ul>
+
+  </div>
+</nav>
