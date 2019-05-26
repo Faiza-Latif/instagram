@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
       projectId: 'instagram-be6fc',
       storageBucket: 'instagram-be6fc.appspot.com',
       messagingSenderId: '954055132279',
-      appId: '1:instagram:web:dc4686c75fabdec0'
+      appId: '1:954055132279:web:dc4686c75fabdec0'
     };
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);

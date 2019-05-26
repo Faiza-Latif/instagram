@@ -19,8 +19,7 @@ export class HeaderComponent implements OnInit {
         this.isLoggedIn = true;
       } else {
         this.isLoggedIn = false;
-        //because its stored on storage
-        firebase.auth().signOut();
+
       }
     });
   }

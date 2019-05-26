@@ -22,11 +22,23 @@ export class SignUpComponent implements OnInit {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(userData => {
         //ask to verify email
-        const user = firebase.auth().currentUser;
+        const user = userData.user;
         user.sendEmailVerification();
-        console.log(userData);
+        //after validating, it stays on the storage but now we need to add to a database
+        // auth != database
+        return firebase.database().ref('users/' + user.uid)
+          .set({
+            fullname: fullName,
+            email: email,
+            uid: user.uid,
+            registrationDate: new Date().toString()
+          })
+          .then(() => {
+          //because its stored on storage
+            firebase.auth().signOut();
+          });
       })
-      .catch(error=> {
+      .catch(error => {
         console.log(error);
       });
   }
