@@ -1,3 +1,4 @@
+import { RouteGuard } from './auth/route-guard';
 import { FollowingComponent } from './following/following.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { AllPostsComponent } from './all-posts/all-posts.component';
@@ -10,10 +11,10 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'allposts', component: AllPostsComponent},
-  {path: 'myposts', component: MyPostsComponent},
-  {path: 'favorites', component: FavoritesComponent},
-  {path: 'following', component: FollowingComponent},
+  {path: 'allposts', component: AllPostsComponent, canActivate: [RouteGuard]},
+  {path: 'myposts', component: MyPostsComponent, canActivate: [RouteGuard]},
+  {path: 'favorites', component: FavoritesComponent, canActivate: [RouteGuard]},
+  {path: 'following', component: FollowingComponent, canActivate: [RouteGuard]},
   {path: 'signup', component: SignUpComponent},
   {path: 'login', component: LoginComponent}
 
