@@ -12,6 +12,7 @@ import { MyPostsComponent } from './my-posts/my-posts.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { RouteGuard } from './auth/route-guard';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RouteGuard } from './auth/route-guard';
     SignUpComponent,
     LoginComponent,
     FollowingComponent,
-    HomeComponent
+    HomeComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
