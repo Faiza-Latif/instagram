@@ -1,3 +1,4 @@
+import { NotificationService } from './shared/notification.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AllPostsComponent } from './all-posts/all-posts.component';
@@ -33,7 +34,7 @@ import { NotificationComponent } from './notification/notification.component';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [RouteGuard],
+  providers: [RouteGuard, NotificationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
