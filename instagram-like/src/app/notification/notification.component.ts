@@ -15,10 +15,21 @@ message: string = null;
       data => {
         this.type = data.type,
         this.message = data.message;
+        this.reset();
       }
     );
   }
 
+  /**
+   * This method is for the error message to disappear after 3seconds
+   */
+  reset() {
+    setTimeout(() => {
+      this.type = null,
+      this.message = null;
+    }, 3000);
+
+  }
   ngOnInit() {
   }
 

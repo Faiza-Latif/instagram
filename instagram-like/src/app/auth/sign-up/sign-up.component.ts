@@ -25,6 +25,8 @@ export class SignUpComponent implements OnInit {
         //ask to verify email
         const user = userData.user;
         user.sendEmailVerification();
+        const message = 'A verification email has been sent to ${email}, kindly check your inbox and follow the steps! :) Enjoy!';
+        this.notifier.display('success', message);
         //after validating, it stays on the storage but now we need to add to a database
         // auth != database
         return firebase.database().ref('users/' + user.uid)
