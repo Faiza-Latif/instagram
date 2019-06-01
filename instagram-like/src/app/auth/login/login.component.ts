@@ -1,3 +1,4 @@
+import { MyFirebaseService } from 'src/app/shared/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
@@ -10,7 +11,8 @@ import { NotificationService } from 'src/app/shared/notification.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService,
+    private firebaseService: MyFirebaseService) { }
 
   ngOnInit() {
   }
@@ -29,19 +31,14 @@ onSubmit(form: NgForm) {
         this.notificationService.display('error', 'Your email has not yet been verified');
         firebase.auth().signOut();
       } else {
-        console.log('next!');
+        //lets see if the user is in the database
+        return this.firebaseService.getUserFromDatabase(userData.user.uid);
       }
     })
-    .catch(
-
-      // console.log(this);
-
-      // function(error) {
-      // const message = error.message;
-      // this.notificationService.display('error', message);
-      // }.bind(this));
-
-      (error) => {
+  .then((userFromDatabase) =>
+    console.log(userFromDatabase)
+    )
+    .catch((error) => {
         this.notificationService.display('error', error.message);
       });
     }
