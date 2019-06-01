@@ -1,8 +1,10 @@
+import { UserService } from 'src/app/shared/user.service';
 import { MyFirebaseService } from 'src/app/shared/firebase.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as firebase from 'firebase';
 import { NotificationService } from 'src/app/shared/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,9 @@ import { NotificationService } from 'src/app/shared/notification.service';
 export class LoginComponent implements OnInit {
 
   constructor(private notificationService: NotificationService,
-    private firebaseService: MyFirebaseService) { }
+    private firebaseService: MyFirebaseService,
+    private userService: UserService,
+    public route: Router) { }
 
   ngOnInit() {
   }
@@ -35,9 +39,12 @@ onSubmit(form: NgForm) {
         return this.firebaseService.getUserFromDatabase(userData.user.uid);
       }
     })
-  .then((userFromDatabase) =>
-    console.log(userFromDatabase)
-    )
+  .then((userFromDatabase) => {
+      if (userFromDatabase) {
+      this.userService.set(userFromDatabase);
+      this.route.navigate(['/allposts']);
+  }
+})
     .catch((error) => {
         this.notificationService.display('error', error.message);
       });

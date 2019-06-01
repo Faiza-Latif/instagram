@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { RouteGuard } from './auth/route-guard';
 import { NotificationComponent } from './notification/notification.component';
 import { MyFirebaseService } from './shared/firebase.service';
-
+import { UserService } from './shared/user.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ import { MyFirebaseService } from './shared/firebase.service';
     AppRoutingModule,
     FormsModule,
   ],
-  providers: [RouteGuard, NotificationService, MyFirebaseService ],
+  providers: [RouteGuard, NotificationService, MyFirebaseService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
