@@ -21,13 +21,13 @@ message: string = null;
   }
 
   /**
-   * This method is for the error message to disappear after 3seconds
+   * This method is for the error message to disappear after 6seconds
    */
   reset() {
     setTimeout(() => {
       this.type = null,
       this.message = null;
-    }, 3000);
+    }, 6000);
 
   }
   ngOnInit() {
