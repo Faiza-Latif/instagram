@@ -42,6 +42,7 @@ export class HeaderComponent implements OnInit {
             this.name = data.name;
             this.uid = data.uid;
         }
+        this.route.navigate(['/myposts']);
       } else {
         this.isLoggedIn = false;
       }

@@ -12,4 +12,6 @@ export class AllPostsComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
 }

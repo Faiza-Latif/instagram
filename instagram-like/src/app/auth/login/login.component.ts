@@ -42,7 +42,6 @@ onSubmit(form: NgForm) {
   .then((userFromDatabase) => {
       if (userFromDatabase) {
       this.userService.set(userFromDatabase);
-      this.route.navigate(['/allposts']);
   }
 })
     .catch((error) => {

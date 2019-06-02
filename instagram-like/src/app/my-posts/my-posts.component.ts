@@ -12,4 +12,8 @@ export class MyPostsComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  onFileSelection(event){
+
+  }
 }
