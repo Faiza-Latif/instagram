@@ -11,23 +11,26 @@ import * as firebase from 'firebase';
 export class MyPostsComponent implements OnInit {
 
   constructor(private fireService: MyFirebaseService,
-     private notificationService: NotificationService) { }
+    private notificationService: NotificationService) { }
 
   ngOnInit() {
   }
 
-  onFileSelection(event){
+  onFileSelection(event) {
     const fileList: FileList = event.target.files;
 
     if (fileList.length > 0) {
       const file: File = fileList[0];
       this.fireService.uploadFile(file)
-      .then(data => {
-        this.notificationService.display('success', 'Picture successfully uploaded');
-      })
-      .catch(err => {
-        this.notificationService.display('error', err);
-      });
-
+        .then(data => {
+          console.log('Sucess');
+          console.log(data);
+          this.notificationService.display('success', 'Picture successfully uploaded');
+        })
+        .catch(err => {
+          console.log(err);
+          this.notificationService.display('error', err);
+        });
+    }
   }
 }
