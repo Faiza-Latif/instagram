@@ -1,25 +1,28 @@
 import * as firebase from 'firebase';
+import { reject } from 'q';
 
 export class MyFirebaseService {
 
-  getUserFromDatabase(uid){
+  getUserFromDatabase(uid) {
     const ref = firebase.database().ref('users/' + uid);
     return ref.once('value')
-    .then(snapshot => snapshot.val());
+      .then(snapshot => snapshot.val());
   }
 
   uploadFile(file: File) {
-   const ref = firebase.storage().ref().child('image/' + file.name);
-   const upload = ref.put(file);
+    const fileName = file.name;
+    const ref = firebase.storage().ref().child('image/' + fileName);
+    const upload = ref.put(file);
 
-   return new Promise((resolve, reject) => {
-    upload.on('state_change', {
-      'next': null,
-      'error': reject(error),
-      'complete': resolve(upload.name, upload.snapshot.downloadURL)
-   });
-  });
-}
+    return new Promise((resolve, reject) => {
 
+      upload.on('state_changed', snapshot => { },
+        error => { reject(error); },
+        () => {
+          const fileUrl = upload.snapshot.downloadURL;
+          resolve({fileName, fileUrl});
+        });
+    });
+  }
 
 }
