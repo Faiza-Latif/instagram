@@ -10,10 +10,11 @@ import { NotificationService } from 'src/app/shared/notification.service';
 export class MyPostsComponent implements OnInit {
   constructor(
     private fireService: MyFirebaseService,
-    private notificationService: NotificationService
-  ) {}
+    private notificationService: NotificationService,
 
-  ngOnInit() {}
+  ) { }
+
+  ngOnInit() { }
 
   onFileSelection(event) {
     const fileList: FileList = event.target.files;
@@ -27,10 +28,13 @@ export class MyPostsComponent implements OnInit {
             'success',
             'Picture successfully uploaded'
           );
+          this.fireService.handleImageUpload(data);
         })
         .catch(err => {
           this.notificationService.display('error', err);
         });
     }
   }
+
+
 }

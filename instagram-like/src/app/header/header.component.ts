@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
        if (data) {
         const user = data;
         this.email = user.email;
-        this.name = user.name;
+        this.name = user.fullname;
         this.uid = user.uid;
        } else {
           this.fieldsReset();
@@ -39,7 +39,7 @@ export class HeaderComponent implements OnInit {
         const data = this.userService.getProfile();
           if (data && data.fullname) {
             this.email = data.email;
-            this.name = data.name;
+            this.name = data.fullname;
             this.uid = data.uid;
         }
         this.route.navigate(['/myposts']);
