@@ -78,4 +78,9 @@ export class MyFirebaseService {
       console.log(result);
       return result;
   }
+
+  getUserReference(uid) {
+    return firebase.database().ref('myPosts').child(uid);
+  }
+
 }
